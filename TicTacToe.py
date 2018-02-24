@@ -10,8 +10,7 @@ numSquares = 9
 def displayInstruct():
     #Displays instruction of the game
     print("""
-        Welcome to Tic-Tac-Toe game! Your brain will fight against computer's processor!
-        Are You ready? 
+        Shalom! Now we're gonna play a famous TicTacToe, also known as kó³ko krzy¿yk game!
         So, our board looks like that :
         
         1 | 2 | 3
@@ -26,20 +25,20 @@ def displayInstruct():
 def question():
         odp = None
         while odp != '0' and odp != '1':
-            odp = input('Write 0 if You want to start! Else write 1')
+            odp = input('If You want to be player 1, write 0. Otherwise write 1!')
         return odp
 
 def whoStarts():
-    #Here we are
+    #Here it is - the beginning
     first = question()
     if first == '0':
         print('You have the first move! You are also the X')
-        human = x
-        pc = o
+        human = X
+        pc = O
     else:
         print('Computer has the first move! You are also the O')
-        human = o
-        pc = x
+        human = O
+        pc = X
     return pc, human
 
 def newBoard():
@@ -90,7 +89,7 @@ def humanMove(board, human):
         try:
             move = int(input('Make Your move!'))
             if move not in legal:
-                print('\n WpisaÅ‚eÅ› zÅ‚e pole, wybierz inne!')
+                print('\n WRONG! THAT WAS ILLEGAL MOVE! Once more!')
         except ValueError: print('Choose the right square!')
     return move
 
@@ -103,7 +102,7 @@ def computerMove(board, pc, human):
     bestMoves = (4,0,2,6,8,1,3,5,7)
     print("I choose square number ", end='')
 
-    #If pc can win, make this move
+    #If pc can win, make it's winning move
     for move in legalMoves(board):
         board[move] = pc
         if winner(board) == pc:
@@ -128,7 +127,7 @@ def computerMove(board, pc, human):
             return move
 
 def nextTurn(turn):
-    #Now, we are changing the moving person
+    #Now, we are changing the player, who is moving
     if turn == x:
         return o
     else:
@@ -142,11 +141,11 @@ def congrats(theWinner, pc, human):
         print('Draw!')
 
     if theWinner == pc:
-        print('Me, the almighty computer, is winner again! MWAHAHAHA')
+        print('YAY, ich habe gewonnen! AUUUUUUU')
     elif theWinner == human:
         print('Human masterrace!')
     elif theWinner == tie:
-        print("So, it's a draw. Till the next time!")
+        print("Draw, or tie, or dead-heat, whatever >:<")
 
 
 
